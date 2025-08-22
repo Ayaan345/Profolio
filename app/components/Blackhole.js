@@ -9,7 +9,7 @@ function BlackholeModel(props) {
   const groupRef = useRef();
   const ringRefs = useRef([]);
   // NOTE: useGLTF returns animations array too
-  const { scene, animations } = useGLTF("/blackhole/scene.gltf");
+  const { scene, animations } = useGLTF("/blackhole/scene.glb");
 
   // connect animations to the group root
   const { actions, mixer } = useAnimations(animations, groupRef);
@@ -156,4 +156,4 @@ export default function Blackhole() {
 }
 
 // Preload GLTF
-useGLTF.preload("/blackhole/scene.gltf");
+useGLTF.preload("/blackhole/scene.glb");
