@@ -11,6 +11,11 @@ import 'swiper/css/pagination';
 import Blackhole from "./components/Blackhole"; // Ensure this is imported
 
 import Navbar from "./components/Navbar"
+import dynamic from "next/dynamic";
+const BlackholeDynamic = dynamic(() => import("./components/Blackhole"), {
+  ssr: false,
+  loading: () => <div style={{height: 420}} />
+});
 
 // Custom hook for typing effect
 const useTypingEffect = (text, speed = 50, startDelay = 0) => {
@@ -81,6 +86,17 @@ export default function Home() {
     { src: "/ss3.png", alt: "SnapShopr Screenshot 3" },
     { src: "/ss4.png", alt: "SnapShopr Screenshot 4" }
   ];
+  const [mountBlackhole, setMountBlackhole] = useState(false);
+
+  useEffect(() => {
+    const start = () => setMountBlackhole(true);
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      requestIdleCallback(start, { timeout: 2000 });
+    } else {
+      const t = setTimeout(start, 1200);
+      return () => clearTimeout(t);
+    }
+  }, []);
 
   const openLightbox = (imageSrc, imageAlt, projectImages) => {
     const currentIndex = projectImages.findIndex(img => img.src === imageSrc);
@@ -237,7 +253,8 @@ export default function Home() {
       {/* Hero Section */}
       <section id="hero" ref={heroRef} className="flex flex-col md:flex-col items-center justify-between px-4 sm:px-8 py-7 relative h-screen font-[family-name:var(--font-montserrat)]">
       <Navbar />
-        <Blackhole />
+        {/* <Blackhole /> */}
+        {mountBlackhole && <BlackholeDynamic />}
         <div className="md:w-1/2 space-y-4 z-20 mx-auto mt- md:ml-10 mb-16 md:mt-35 md:mb-32">
           <h1 className="text-xl sm:text-2xl mt-16 md:mt-0">I’m</h1>
           <h2 className="text-4xl sm:text-6xl font-bold">Ayaan</h2>

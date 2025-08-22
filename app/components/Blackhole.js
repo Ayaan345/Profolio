@@ -139,21 +139,16 @@ function LoadingFallback() {
 export default function Blackhole() {
   return (
     <div className="absolute inset-0 z-0 opacity-90 mt-30 md:mt-0">
-      <Canvas camera={{ position: [0, 0, 12] }}>
-        <hemisphereLight intensity={0.8} />
+      <Canvas frameloop="demand" dpr={[1, 1.4]} camera={{ position: [0, 0, 12] }} shadows={false}>
         <ambientLight intensity={0.7} />
-        <directionalLight position={[10, 10, 5]} intensity={0.8} />
-        <pointLight position={[-10, -10, -5]} intensity={0.6} />
-
+        <directionalLight position={[5,5,5]} intensity={0.8} />
         <Suspense fallback={<LoadingFallback />}>
           <BlackholeModel />
         </Suspense>
-
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />
+        <OrbitControls enableZoom={false} enablePan={false} autoRotate={true} />
       </Canvas>
     </div>
   );
 }
 
-// Preload GLTF
-useGLTF.preload("/blackhole/scene-optimized.glb");
+
