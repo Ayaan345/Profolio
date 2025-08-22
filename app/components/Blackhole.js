@@ -9,7 +9,7 @@ function BlackholeModel(props) {
   const groupRef = useRef();
   const ringRefs = useRef([]);
   // NOTE: useGLTF returns animations array too
-  const { scene, animations } = useGLTF("/blackhole/scene.glb");
+  const { scene, animations } = useGLTF("/blackhole/scene-optimized.glb");
 
   // connect animations to the group root
   const { actions, mixer } = useAnimations(animations, groupRef);
@@ -141,7 +141,7 @@ export default function Blackhole() {
     <div className="absolute inset-0 z-0 opacity-90 mt-30 md:mt-0">
       <Canvas camera={{ position: [0, 0, 12] }}>
         <hemisphereLight intensity={0.8} />
-        <ambientLight intensity={0.6} />
+        <ambientLight intensity={0.7} />
         <directionalLight position={[10, 10, 5]} intensity={0.8} />
         <pointLight position={[-10, -10, -5]} intensity={0.6} />
 
@@ -156,4 +156,4 @@ export default function Blackhole() {
 }
 
 // Preload GLTF
-useGLTF.preload("/blackhole/scene.glb");
+useGLTF.preload("/blackhole/scene-optimized.glb");
