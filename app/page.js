@@ -617,9 +617,10 @@ export default function Home() {
                     transform: showEmail ? 'translateX(10px)' : 'translateX(0)'
                   }}
                 >
-                  <p className="whitespace-nowrap text-sm sm:text-lg">example1234265@gmail.com</p>
+                  <p className="whitespace-nowrap text-sm sm:text-lg">ayaanshoaib519@gmail.com</p>
                 </div>
               </div>
+              <div> Phone : 03009240732 </div>
               <div className="relative flex items-center">
                 <button
                   onClick={handleLinkClick}
