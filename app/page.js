@@ -609,6 +609,7 @@ export default function Home() {
                     className="h-10 w-10 sm:h-13 sm:w-13"
                   />
                 </button>
+                <div className="ml-6"> Phone : 03009240732 </div>
                 <div
                   className={`absolute left-full transform -translate-x-1/2 text-white transition-all duration-500 ease-in-out overflow-hidden`}
                   style={{
@@ -620,7 +621,6 @@ export default function Home() {
                   <p className="whitespace-nowrap text-sm sm:text-lg">ayaanshoaib519@gmail.com</p>
                 </div>
               </div>
-              <div> Phone : 03009240732 </div>
               <div className="relative flex items-center">
                 <button
                   onClick={handleLinkClick}
